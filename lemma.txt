@@ -1,0 +1,49 @@
+*general heuristic section
+-hand shake lemma - use to find #graph edges, determine if graph is clique ?
+-|x| + |y| = max( |x + y|, |x - y| ) with squeeze theorem h(x) <= f(x) <= g(x)
+-well know fact in geometry about mean of point on line segment gives min distance to all other points on the line
+-cyclic sum and graph with equal indegree and outdegree
+-Sn=n*(n+1)/2=(l + r),trivially l inrange[0,Sn]<=>r = Sn-l(can split Sn to 2 sets)
+-bound or prove existance of sol. with Bezout identity and CRT
+-given w, for k >= 2, sigma(k**i,i=0 -> i=n-1) < k**n, use this fact to find minimal subset with value more than or equal to w in O(log(n))( when w represented by binary choices of the said set
+-invariant, point to origin function, reachable and unreachable state
+-for all n>=3, suppose n is shortest side of right triangle, claim that there always exist pythagorean triple ( for n^2 + m^2 = k^2, let n^2 = (k-m)(k+m) )
+-not lemma but important, always look at butterfly pattern 
+-aside from parity, guessing and supposing things from thin air can be helpful
+-infinite arithmetic progression under modulo always has deterministic period
+-generate pythagorean triple, x**2 + y**2 = z**2,let u,v be even and odd respectively, x = |u**2 - v**2|, y = 2uv, z = u**2 + v**2
+-congruence invariant, a === b(mod c) => f(a) === f(b)(mod c), consequenses from the fact that congruence can be add, subtract, multiply but not divide in general
+-congruence cancellation rule, gcd(c,m)=1, ca == cb(mod m) => a == b(mod m)
+-Fermat's Little Theorem, a**p === a(mod p) => a**(p-1) === 1(mod p) (p is prime)
+-subsegment dp
+-goldbach conjecture all even natural number upto 4*10^18 is sum of 2 primes
+-n = 10^5 has at most 128 divisors, m = 10^12 has at most 1715 divisors;
+-palindrome generated and expand from middle(of size 2 or 3)
+-numbers that can fit in some line can always fit in curve with same end points!
+-in *1500 rating codeforces, prefixsum is often used to stored repeated pattern
+-in *1600 rating codeforces, cyclic diagonal matrix propertise is often used
+-XOR sum, a+b = a^b + 2(a&b), extended version :
+a+b = a|b + a&b
+a^b = a|b - a&b
+-geometric distribution on 1-base and 0-base index, let k be # of birds, n be # of boxes, 1-base: floor(n/k); 0-base floor(n-1/k)+1 or ceil(n/k);
+-maximum subarray sum intuition (basis of many dp)***
+-exchange argument, if do this doesn't make answer worse then do!!(greedy)
+-benq sliding range trick to optimize dnq dp is nut!, no need for persist segtree
+-grid dp, twisting diagonal invariant, monotonicity
+
+
+
+
+*p-bility section
+-birthday paradox
+-(trivial)EV is the same with mean of experiment
+
+-Law of Large Numbers: (solid reason behind randomized algorithm)
+    * despite how large variability of random variable
+the average value(mean) of all actual outcomes (from repeated experiments) 
+will tend to be close to the EV(expected value)
+    * as the number of trials(or experiments) increases, the average of the results obtained approaches the expected value of the random variable.
+
+-Coefficient of Variation = Stdev/Mean, 0.5 consider to be relatively low in most context, in some context like bmi, enzyme activity the acceptable value can be upto around 1, in financial institution can be upto 2
+-Bessel's correction, when you calculate the sample mean(X_bar) and sample variance(s^2), you are using sample data to estimate population parameters(mean and variance). Using n - 1 instead of n in the denominator of the sample variance formula corrects for BIAS!! that would otherwise underestimate the population variance
+** it adjusts for the fact that sample variance tends to underestimate population variance
