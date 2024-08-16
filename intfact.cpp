@@ -1,5 +1,6 @@
 //note: all number at most 10**5 has at most 128 divisors,
 //all number at most 10**12 has at most 1715
+//in general n has at most n^1/3 divisors in practice
 bool isPrime(ll x) {
     for (ll d = 2; d * d <= x; d++) {
         if (x % d == 0)
@@ -25,4 +26,17 @@ void decompose(ll x){
     }
     if(x>1)temp.pb(x);
     //do something
+}
+
+void find_all_divisors(ll x){
+    vl temp;
+    for(int i=1;(ll)i*i<=x;++i){
+        if(x%i==0){
+            if(i==x/i)temp.pb(i);
+            else {
+                temp.pb(i); temp.pb(x/i);
+            }
+        }
+    }
+    //temp == all divisors of x
 }
