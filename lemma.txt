@@ -25,11 +25,25 @@
 -XOR sum, a+b = a^b + 2(a&b), extended version :
 a+b = a|b + a&b
 a^b = a|b - a&b
+-d|a, d|b => d|ax+bx, d|a+b d|a-b consecutive integer are coprime
 -geometric distribution on 1-base and 0-base index, let k be # of birds, n be # of boxes, 1-base: floor(n/k); 0-base floor(n-1/k)+1 or ceil(n/k);
 -maximum subarray sum intuition (basis of many dp)***
 -exchange argument, if do this doesn't make answer worse then do!!(greedy)
 -benq sliding range trick to optimize dnq dp is nut!, no need for persist segtree
 -grid dp, twisting diagonal invariant, monotonicity
+
+-look for application of tree diameter when solving node distace problems
+-fartest node to each node using tree diameter
+-coordinate compression or mapping invariant!!(e.g. partision subsequence sum)
+-using derivative to find global/local minima/maxima
+
+#dp section heuristic
+-using map for dp, using building prefix dp sum,xor,etc. from left to right
+then the subarray that start to the right of i pointer will not be included
+(standard idea in *1700 dp)
+-connect point on line segment dp
+-copy many substring and append to string then working backward queries(807div2C)
+
 
 
 
@@ -46,4 +60,5 @@ will tend to be close to the EV(expected value)
 
 -Coefficient of Variation = Stdev/Mean, 0.5 consider to be relatively low in most context, in some context like bmi, enzyme activity the acceptable value can be upto around 1, in financial institution can be upto 2
 -Bessel's correction, when you calculate the sample mean(X_bar) and sample variance(s^2), you are using sample data to estimate population parameters(mean and variance). Using n - 1 instead of n in the denominator of the sample variance formula corrects for BIAS!! that would otherwise underestimate the population variance
+**fix only sample variance is biased(from chat gpt) we need bessel correction for only sample variance 
 ** it adjusts for the fact that sample variance tends to underestimate population variance
