@@ -1,23 +1,31 @@
-struct Matrix{
-    double a[2][2] = {{0,0},{0,0}};
-    Matrix operator *(const Matrix& other){
-        Matrix product;
-        for(int i=0;i<2;++i){
-            for(int j=0;j<2;++j){
-                for(int k=0;k<2;++k){
-                    product.a[i][k] += a[i][j] * other.a[j][k];
+struct Matrix {
+    vector<vector<long long>> a;
+    int rows, cols;
+ 
+    Matrix(int r, int c, int val) : rows(r), cols(c), a(r, vector<long long>(c, val)) {}
+ 
+    // Matrix multiplication operator
+    Matrix operator *(const Matrix& other) {
+        // The resulting matrix will have dimensions (rows x other.cols)
+        Matrix product(rows, other.cols, 0);
+ 
+        // Matrix multiplication: A (rows x cols) * B (other.rows x other.cols)
+        // Ensure cols == other.rows for valid multiplication
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < other.cols; ++j) {
+                for (int k = 0; k < cols; ++k) {
+                    product.a[i][j] += a[i][k] * other.a[k][j] % INF;
+                    product.a[i][j] %= INF;
                 }
             }
         }
         return product;
     }
 };
-//for calculating nth recurrence of function 
-//or makov chain like structure reccurence
-//entry Matrix[i][j] is problability/number of way ith state change to jth state
-Matrix expo_power(Matrix a, int n){//**note n=1 is equal do nothing,n=2is do once 
-    Matrix product;
-    for(int i=0;i<2;++i)product.a[i][i]=1;
+ 
+Matrix expo_power(Matrix a, int n, int size){//**note n=1 is equal do nothing,n=2is do once 
+    Matrix product(size,size,0);
+    for(int i=0;i<size;++i)product.a[i][i]=1;
     while(n>0){
         if(n&1){
             product = product * a;

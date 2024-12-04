@@ -25,13 +25,33 @@
 -XOR sum, a+b = a^b + 2(a&b), extended version :
 a+b = a|b + a&b
 a^b = a|b - a&b
+-d|a, d|b => d|ax+bx, d|a+b d|a-b consecutive integer are coprime
 -geometric distribution on 1-base and 0-base index, let k be # of birds, n be # of boxes, 1-base: floor(n/k); 0-base floor(n-1/k)+1 or ceil(n/k);
 -maximum subarray sum intuition (basis of many dp)***
 -exchange argument, if do this doesn't make answer worse then do!!(greedy)
 -benq sliding range trick to optimize dnq dp is nut!, no need for persist segtree
 -grid dp, twisting diagonal invariant, monotonicity
 
+-look for application of tree diameter when solving node distace problems
+-fartest node to each node using tree diameter
+-coordinate compression or mapping invariant!!(e.g. partision subsequence sum)
+-using derivative to find global/local minima/maxima
 
+#dp section heuristic
+-using map for dp, using building prefix dp sum,xor,etc. from left to right
+then the subarray that start to the right of i pointer will not be included
+(standard idea in *1700 dp)
+-connect point on line segment dp
+-copy many substring and append to string then working backward queries(807div2C)
+-***summation of all phi(d)st.d|n equal n. sigma_d|n phi(d)=n
+-we can check repetitive pattern(or period) with string index in set<int> in O(n)
+ eg. check if there are 2repettitive character sequnce in string
+ like aldabababababkododododod -> there is ababab... and ododod....
+ -cool number theory trick using c|(a-b) => a congruence b ( mod c ) property
+ -whole array will have same remainder under modulo c if it's difference array gcd is c
+ -some sequence of a and b will preserve it's palindromic property when append some fixed size suffix
+ -*** observe the range btw 2 object in dp is small/ or can be compute with suffix maximum/minimum/etc.
+ - infinite bit sequence pattern 
 
 
 *p-bility section
@@ -46,4 +66,48 @@ will tend to be close to the EV(expected value)
 
 -Coefficient of Variation = Stdev/Mean, 0.5 consider to be relatively low in most context, in some context like bmi, enzyme activity the acceptable value can be upto around 1, in financial institution can be upto 2
 -Bessel's correction, when you calculate the sample mean(X_bar) and sample variance(s^2), you are using sample data to estimate population parameters(mean and variance). Using n - 1 instead of n in the denominator of the sample variance formula corrects for BIAS!! that would otherwise underestimate the population variance
+**fix only sample variance is biased(from chat gpt) we need bessel correction for only sample variance 
 ** it adjusts for the fact that sample variance tends to underestimate population variance
+
+
+# The Technique I Came Up With/learned
+- two lines/line segments binary search 
+- subinterval binary search
+- formulate problem to shortest-path tree(dfs tree? and bridge of is-this-fft  blog?)
+- longest path dp with toposort
+- observe that something cannot get too big
+- tree diameter shrinking node
+- jacobian mapping
+- From 1992F Valuable Cards, I learn how to find subset in O(n^2) with contribution trick (instead of traditionally O(2^n)
+- standard idea C.removal of unattractive pairs (removing adjecent character
+  that are difference)
+  * find shortest possible lenght of string after removal
+    let mx be most fq char => answer is max(n%2, 2*mx - n)
+- matching small with big pair
+- am-gm inequality generalise to sum of product of sequences of combination is 
+minimize when some are maximum possibe and other remain minimum possible
+- am-gm state that product of 2 number is maximum when they are almost or equal
+- Theorem: match nondecreasing array a with nonincreasing array b with same lenghtthen sum of |ai-bi| is maximum
+- Range unique xor
+- Find Cromatic Number of undirected-graph by finding maximal sub-clique size
+- when even A and B are independent A*B can be interpret as linear combination
+- reflection (x,y) to (x',y') under line y=x-k => (x'=y+k, y'=x-k)
+
+#asspull is something that comes from nowhere and has no foreshadowing and makes little sense other than for plot convenience.
+-***CUM SUM CONTRIBUTION humongus state reduction ass pull optimization technique
+    optimize O(n^2) dp to O(nk) with ass pull contribution technique 
+    "the values j>k are treated identically to the values j=k
+    , so we can limit the value of j to k and say that dp i,j
+    is the number of ways to split the first i elements into at least j
+    blocks if j=k"
+
+    a little more detailed explanation: let the 1st to have (k+1)th block
+    contain both it's kth state and (k+1)th state, let the 1st to have (k+2)th
+    block contain both it's kth state, (k+1)th state and (k+2)th state on the 
+    same block and so on... using the fact that each (k+...)all depends on 
+    kth, (k+1)th, ... of the before i-1 state 
+    get this from BledDest solution of 1989E-Distance to Different
+    
+- floating points precision get worse the more you multiply or divide, in such a problem if EPS = 10**(-k) then use scaling factor of 10**k to all floating points in problem as appropriate
+
+- reverse path bijection, the number of path that end at i with length j equal the number of path starting at i and end somewhere using j move !!

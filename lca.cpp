@@ -1,12 +1,12 @@
 //TODO: initialize tree(adj list)
 const int LOG = 20;
-int depth[N], parent[N];
+int dep[N], parent[N];
 int up[N][LOG]; // 2^j-th ancestor of n
 
 void dfs(int a,int e){
     for(auto b:adj[a]){
         if(b == e)continue;
-        depth[b] = depth[a] + 1;
+        dep[b] = dep[a] + 1;
         parent[b] = a;
         up[b][0] = parent[b];
         for(int i=1;i<LOG;++i){
@@ -17,8 +17,8 @@ void dfs(int a,int e){
 }
 
 int lca(int a, int b){
-    if(depth[a]<depth[b])swap(a,b);
-    int k = depth[a] - depth[b];
+    if(dep[a]<dep[b])swap(a,b);
+    int k = dep[a] - dep[b];
     for(int i=LOG-1;i>=0;--i){
         if(k &(1<<i)){
             a = up[a][i];
