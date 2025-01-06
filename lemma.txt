@@ -8,7 +8,7 @@
 -given w, for k >= 2, sigma(k**i,i=0 -> i=n-1) < k**n, use this fact to find minimal subset with value more than or equal to w in O(log(n))( when w represented by binary choices of the said set
 -invariant, point to origin function, reachable and unreachable state
 -for all n>=3, suppose n is shortest side of right triangle, claim that there always exist pythagorean triple ( for n^2 + m^2 = k^2, let n^2 = (k-m)(k+m) )
--not lemma but important, always look at butterfly pattern 
+-not lemma but important, always look at butterfly pattern of bivariate equation
 -aside from parity, guessing and supposing things from thin air can be helpful
 -infinite arithmetic progression under modulo always has deterministic period
 -generate pythagorean triple, x**2 + y**2 = z**2,let u,v be even and odd respectively, x = |u**2 - v**2|, y = 2uv, z = u**2 + v**2
@@ -111,3 +111,4 @@ minimize when some are maximum possibe and other remain minimum possible
 - floating points precision get worse the more you multiply or divide, in such a problem if EPS = 10**(-k) then use scaling factor of 10**k to all floating points in problem as appropriate
 
 - reverse path bijection, the number of path that end at i with length j equal the number of path starting at i and end somewhere using j move !!
+-** I come up with monotonic stack(monotonic decreasing stack) to find prv bigger element for each i in array, also to find nxt bigger element we solve the same problem by reversing the array(search from n to 1), use it first time on D - Max GEQ Sum

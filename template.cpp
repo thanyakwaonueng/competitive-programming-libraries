@@ -53,7 +53,7 @@ template<class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 #define FORd(i,a,b) for (int i = (b)-1; i >= a; i--)
 #define F0Rd(i,a) for (int i = (a)-1; i >= 0; i--)
 #define trav(a,x) for (auto& a : x)
-#define uid(a, b) uniform_int_distribution<int>(a, b)(rng)
+#define uid(a, b) uniform_int_distribution<long long>(a, b)(rng)
  
 #define sz(x) (int)(x).size()
 #define mp make_pair
