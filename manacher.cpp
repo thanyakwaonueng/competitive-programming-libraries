@@ -25,7 +25,7 @@ vector<int> manacher(string s) {
     return vector<int>(begin(res) + 1, end(res) - 1);
 }
 
-bool is_palindrome(int l, int r){
+bool is_palindrome(int l, int r, vector<int> &v){
     if(v[l +r] < (r - l + 1))return false;
     return true;
 }

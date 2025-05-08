@@ -71,7 +71,7 @@ template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 const char nl = '\n';
-const int N =2e5+1;
+const int N = 2e5+1;
 const int INF = 1e9+7;
 const long long LINF = 1e18+7;
 

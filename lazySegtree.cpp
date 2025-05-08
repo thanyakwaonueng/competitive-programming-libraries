@@ -43,7 +43,7 @@ int build_tree(vi &a,int n){
     tree.clear(); lazy.clear();
     int m=n;
     while(__builtin_popcount(m)!=1)++m;
-    tree.resize(2*m+1,0); lazy.resize(2*m+1,0);
+    tree.resize(2*m+10,0); lazy.resize(2*m+10,0);
     for(int i=0;i<n;++i)tree[i+m]=a[i];
     for(int i=m-1;i>=1;--i)tree[i]=tree[2*i]+tree[2*i+1];
     return m;

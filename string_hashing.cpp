@@ -1,26 +1,19 @@
-//typedef
-typedef long long ll;
-typedef pair<ll,ll> pl;
-#define M 1000000321
-#define OP(x, y) pl operator x (pl a, pl b){return {a.first x b.first, (a.second y b.second) % M }; }
-OP(+, +) OP(*, *) OP(-, + M -)
-//random number generator
-mt19937 gen(chrono::steady_clock::now().time_since_epoch().count());
-uniform_int_distribution<ll> dist(256, M - 1);
-//queries - check if S[i:i+l] == S[j:j+l](inclusive), S is a string, [:] is slice
-#define H(i, l) (h[(i) + (l)] - h[i] * p[l])
-#define EQ(i, j, l) (H(i, l) == H(j, l))
-//preprocessing
-const int N = 2e5; 
-string s;
-pl p[N], h[N];
-ll n;
+typedef __int128 HASH;
+HASH p[NN], h[NN];
+constexpr HASH M = 1000000000000000003;
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());//delete this if using my template
+#define uid(a, b) uniform_int_distribution<long long>(a, b)(rng)//delete this if using my template
 
-int main(){
-    cin >> n >> s;
-    p[0] = {1,1}, p[1] = {dist(gen) | 1, dist(gen) };
-    for(ll i=1;i<=(ll)s.length();++i){
-        p[i] = p[i-1] * p[1];
-        h[i] = h[i-1] * p[1] + make_pair(s[i-1], s[i-1]);
+void compute_hash(string const& s){
+    p[0] = 1, p[1] = uid(256, M-1);
+    for(ll i=0;i<(int)s.length();++i){
+        p[i+1] = p[i]*p[1]%M;
+        h[i+1] = (h[i]*p[1] + s[i])%M;
     }
 }
+
+HASH sub_hash(ll l, ll r){ //range [l, r)
+    return (h[r] - p[r-l]*h[l]%M + M)%M;
+}
+
+

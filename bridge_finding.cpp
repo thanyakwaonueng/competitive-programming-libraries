@@ -1,3 +1,4 @@
+//NOTE**: not work for multigraph, I'm too lazy too fix for now
 /*
     dfs-tree bridge finding algorithm
     let lvl[root] = 1 (root = 1)
